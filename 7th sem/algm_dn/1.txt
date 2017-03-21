@@ -1,0 +1,595 @@
+ Abstract—For about two decades scientists have been 
+developing techniques for enhancing the quality of medical images 
+using Fourier transform, DWT (Discrete wavelet transform),PDE 
+model etc., Gabor wavelet on hexagonal sampled grid of the images 
+is proposed in this work. This method has optimal approximation 
+theoretic performances, for a good quality image. The computational 
+cost is considerably low when compared to similar processing in the 
+rectangular domain. As X-ray images contain light scattered pixels, 
+instead of unique sigma, the parameter sigma of 0.5 to 3 is found to 
+satisfy most of the image interpolation requirements in terms of high 
+Peak Signal-to-Noise Ratio (PSNR) , lower Mean Squared Error 
+(MSE) and better image quality by adopting windowing technique. 
+Keywords—Hexagonal lattices, Gabor filter, Interpolation, image 
+processing. 
+I. INTRODUCTION 
+- RAY image enhancement is the process of enhancing 
+edges progressively until optimal levels of clarity are 
+reached in the x-ray image. Basically the edge segments of the 
+image are enhanced by making its light parts lighter and its 
+dark parts darker along the edges, preserving interior textures 
+at their original gray level values. An interactive system was 
+employed in [1] which enhances a digital radiogram, giving 
+the radiologist a refined image on which to base a diagnosis. 
+In [2], a local adaptive image enhancement and simultaneous 
+denoising algorithm for fulfilling the requirements of digital 
+X-ray image enhancement is introduced. An approach to 
+image enhancement of digital chest radiographs is described 
+by Du-Yih TSAI and Katsuyuki KOJIMA [3]. The method is 
+to employ various non-linear mapping functions to different 
+scale levels at the transform domain. The mapping functions 
+are used to project a set of discrete wavelet transform (DWT) 
+coefficients to a new set of DWT coefficients. In [4], a new 
+method for contrast enhancement of MR brain images was 
+proposed using a canonical correlation based kernel 
+independent component analysis (KICA). The method 
+presented for enhancing medical images generated from Xrays 
+in [5] is based on a nonlinear partial differential equation 
+(PDE) model, Kramer’s PDE model. M. Dirk Robinson [6] 
+used a fast nonlinear deblurring algorithm, specifically 
+address the nonstationary noise associated with multiframe 
+Author A is with the Electronics and Communication Engineering 
+Department, ,Amrita Vishwa Vidyapeetham , Coimbatore, Tamil Nadu,India ( 
+phone: 91-0422-2250256; e-mail: s_veni @ cb.amrita.edu). 
+Author B, is with the Electronics and Communication Engineering 
+Department, Amrita Vishwa Vidyapeetham, Coimbatore, Tamil Nadu, India ( 
+e-mail: ka_narayanankutty @ cb.amrita.edu). 
+reconstructed images for enhancing digital mammogram 
+images. Thus, for about two decades scientists have been 
+developing techniques for processing pictorial information by 
+means of digital computers with various techniques and 
+algorithms. All these works are based on the images on 
+rectangular Grid. The work proposed in this paper is based on 
+hexagonal sampling grid to process the enhancement of 
+medical images as it has many features. 
+Since Golay [7], the possibility of using a hexagonal 
+structure to represent digital images and graphics has been 
+studied by many researchers [8-14]. Hexagonal grid of pixels 
+can be represented on the existing rectangular screens for 
+modeling and processing purpose, which is more suitable for 
+computer vision modeling [15]. Manipulating data sampled 
+on one lattice to produce data sampled on a different lattice is 
+termed as resampling. In this approach, the original data is 
+sampled on a square lattice while the desired image is to be 
+sampled on a hexagonal lattice (Figure.1) 
+Fig. 1 Acquisition of hexagonally sampled images 
+The resampling method used in this paper is as follows. For 
+each odd line, find the midpoint between two adjacent pixels 
+by simple linear interpolation (i.e., mid = (left + right) / 2) 
+[16]. Discard the left and right, keeping only the mid values. 
+This gives us a hexagonal mapping from a regular square or 
+rectangular grid. The procedure is as follows: 
+p new ( x ,2 y ) = p old (x ,2 y) (1) 
+pnew(x,2y+1) = (pold (x,2y+1)+ pold(x+1,2y+1))/ 2 (2) 
+During the acquisition of the images from rectangular 
+lattice to the hexagonal lattice, it was observed that there is a 
+considerable loss in image quality [Fig.2(a)].So, selection of 
+suitable interpolation technique is needed before processing 
+the image. Image reconstruction through interpolation is 
+Image Enhancement of Medical Images using 
+Gabor Filter Bank on Hexagonal Sampled Grids 
+Veni.S A, K.A.Narayanankutty B 
+X
+ Fig. 2 (a) Original chest X-Ray image (b) Pixel representation on 
+hexagonal grid 
+routine task in image processing during all transformation that 
+is made on an image. Such transformations include scaling, 
+rotation, registration, and edge detection. Considerable 
+interest on hexagonal sampling is shown recently due to the 
+interest in human vision systems , some of the image 
+acquisition systems using hexagonally laid pixels, imaging 
+radars and nuclear medicine. They also possess better 
+topological and geometrical properties, resulting in a more 
+efficient signal representation in two dimensions [17]. 
+Images are generally constructed out of discrete sample 
+points and if the fitted function is band limited, the signal can 
+be reconstructed using interpolation by a Sinc-function, which 
+is a low pass filter in the frequency domain. Ideally this 
+interpolator should not create any artifacts on the resultant 
+interpolation, but it introduces artifacts due to its truncation or 
+by windowing for computational economics. This has 
+prompted scientists to explore compactly supported 
+interpolating functions which are approximations to obtain a 
+perfect reconstruction. It has also a filtering effect as some 
+noise components get suppressed during reconstruction. Much 
+work is available for interpolation in rectangular lattices using 
+parameterized wavelets and piecewise polynomial functions, 
+the most important being that is using B - Splines [18]. B - 
+Spline methods enable approximation in a simple way using 
+the orthogonal properties of B - Splines. In hexagonal grid, 
+three methods namely, box splines, hex-splines and 
+generalized splines of maximal order and minimum support 
+are proposed [19-26]. The first one exploits the six fold 
+symmetry and the second, twelve fold symmetry. However the 
+third one is a generalization to get best results out of an 
+interpolation with a trade off between the interpolated result 
+and computational complexity. This is achieved from error 
+minimization using the spectral components with an 
+assumption that the signal energy is concentrated over the 
+low-frequency region. A method employing Gabor filters is 
+proposed on the hexagonal lattice to get enhanced quality 
+image reconstruction with some extra computational power. 
+For analysis, windowing technique is used which yields 
+improved results. 
+II. GABOR FILTERS 
+A. Overview of Gabor filters 
+Gabor filters have desirable properties for picture analysis 
+and feature extraction: They are selective in space, spatial 
+frequency and orientation , achieving the theoretical limit for 
+conjoint resolution in the spatial and spatial frequency domain 
+[27]. Therefore, they have been widely used in these fields in 
+recent years [28-31]. Those filters were also used to describe 
+the behavior of simple cells in area V1 of the human visual 
+cortex, which has turned out to be very successful [32]. Hubel 
+and Wiesel [33] found simple cells in a cat’s visual cortex, 
+which was sensitive to frequency and orientation of an image 
+perceived. Experiments revealed that a Gabor filter takes the 
+form of a Gaussian modulated complex sinusoid in the spatial 
+domain. The standard definition proposed by B. S. Manjunath 
+and W. Y. Ma [34] is used (Equation 3).A two dimensional 
+Gabor function g(x, y) and its Fourier transform G(u, v) can be 
+written as: 
+. . . 
+.
+. 
+. . . 
+.
+. 
++ 
+. . . 
+.
+. 
+. . . 
+.
+. 
+- + 
+. . 
+.
+. 
+. . 
+.
+. 
+= jWx 
+y 
+y 
+x 
+x 
+x y 
+g x y p 
+ps s s s 
+2 
+2
+2 
+2 
+2 
+2
+exp 1 
+2 
+( , ) 1 
+or 
+] exp( 2 ( cos sin )) 
+2 2 
+2 2 
+exp[ 
+2 2 
+( , ) 1 p . . 
+ps s 
+j F x y 
+g
+x y 
+g 
+g x y + 
++ 
+= - 
+(3) 
+In the frequency domain, 
+( ) 
+.. 
+..
+. 
+.. 
+..
+. 
+. . 
+.
+. 
+. . 
+.
+. 
++ 
+- 
+= - 
+2 
+2 2 
+2 2 
+( , ) exp 1 
+v 
+v 
+u
+G u v u W 
+s s 
+(4) 
+Where 
+y 
+and v 
+x 
+u 
+ps 
+s 
+ps 
+s 
+2 
+1 
+2 
+= 1 = 
+While sx and sy are the standard deviations of the elliptical 
+Gaussian along x and y axes. The DC values of 2D Gabor 
+filters were removed in order to eliminate high response to 
+absolute intensity values. Filter parameters were obtained 
+using the following Formulas: 
+1 
+1
+- 
+- 
+. .. . 
+. .. 
+. 
+= s 
+U l
+U h 
+a 
+a(s m ) 
+U U h 
+- 
+= 0 
+( ) 
+( 1) 2 ln 2 
+1 0 
++ 
+- 
+= 
+a 
+a U 
+u s 
+( ) 2
+1 
+2 
+2 ln 2 2 2 2 ln 2 
+2 
+2 ln 
+2 
+tan 
+- 
+. . 
+.
+. 
+. . 
+.
+. 
+- 
+. . 
+.
+. 
+. . 
+.
+. 
+. . 
+.
+. 
+. . 
+.
+. 
+- ..
+. 
+..
+= . 
+Uh 
+u 
+Uh
+Uh u 
+v k 
+p s s 
+s 
+(5) 
+Where S is the total number of stages and m = 0,1, ___S-1. 
+The DC values of 2D Gabor filters were removed in order to 
+eliminate high response to absolute intensity values. 
+ B.Importance of windowing 
+Usually, it is not possible to process all the samples of a 
+signal simultaneously. The signal is processed in reduced 
+segments, chosen with an analysis window. By choosing a 
+size of an adopted window, we can generally observe that the 
+signal is stationary during the duration of the analysis period. 
+Apodization windows are often used in signal processing to 
+reduce the ill effects of finite processing windows. The 
+windowed signal Xw (k) is thus represented as the product of 
+the signal and of the weighted window: 
+Xw (k) = x (k).w(k) 
+Where x (k) is the signal to be analyzed and w(k) the 
+weighting or temporal window of null value outside the 
+observation interval. This temporal product is transformed in 
+the frequency domain by a convolution product of the Fourier 
+transforms of the sequence and window. A window is needed 
+which does not suddenly cut off the signal at its edges, but 
+rather one which smooths the signal gradually down to zero at 
+its edges. One candidate for this is selected as the Hanning 
+window [35 ]. This is defined by 
+k N 
+N 
+h k k = = ..
+. 
+..
+. 
+- 
+= - , 0 
+1 
+0.54 0.46 cos 2
+p 
+(6) 
+Effect of the Gabor filter with Hanning window on the texture 
+image with hexagonal sampling is discussed in the section IV. 
+III COMPUTATIONAL RESULTS 
+A.Gabor Filter Bank 
+The filter bank was carried out with six orientations as 0º, 30º, 
+60º, 90º, 120º and 150º and three radial frequency values: F = 
+(0.3536, 0.1768 and 0.0884). This leaves us with a total of 18 
+filters that cover the frequency domain. Different standard 
+deviation values of the Gaussian curve were tested, those 
+being the three values used in the study s g = (2.91, 5.82 and 
+11.64) [Equation (3)]. 
+Fig. 3 (a) Gabor kernel and (b) Gabor filter bank with sg 
+=11.64; F=0.0884 
+B.Gabor filter bank for hexagonal sampled Image 
+Next the filter bank was carried out with three orientations 00 
+, 600 and 1200. The filter bank was applied to the hexagonal 
+sampled images e.g chestxray.tif - Figure 2(b) which is of 
+poor quality obtained for the input image shown in Figure 
+2(a).Half pixel shift method for the acquisition of hexagonal 
+lattice from rectangular lattice is used as reported in our 
+earlier paper [36-37]. 
+Fig. 4 (a) Gabor kernel and (b) Gabor filter bank with sg =5.82 ;F = 
+0.1786 
+Fig. 5 (a) Gabor kernel and (b) Gabor filter bank with sg = 
+2.91 ;F = 0.3536 
+The image resulting from the filtering process is shown in 
+Figure 6(b) with clarity in the image. The results show that 
+that the proposed methodology works effectively with any 
+complete directional decomposition. 
+
+ Fig. 6 (a),(c),(e),(g) Original images of Chestxray. tif,thumb.jpg, 
+brain,jpg and mri.tif respectively (b) ,(d),(f) and (h) Gabor filtered 
+image with the effect of filter bank corresponding to the original 
+images 
+C. Gabor kernel with windowing technique 
+Fig. 7 shows the Gabor kernel with Hanning window 
+discussed in section II-B. Figure .8 shows the response of 
+image obtained by convolving the kernel of Figure.7 . With 
+the effect of window, image is free from spurious shading and 
+features of the image is very clear compared with the original 
+image. The results show that the obtained image quality is 
+better, smoothed and the orientations/edges are very clear 
+(Figure. 9). Performance measures in terms of Peak Signal-to- 
+Noise ratio (PSNR) and Mean Squared Error (MSE) were 
+analysed and listed in Table.1 which shows marginal 
+improvement with hexagonal lattice than the rectangular 
+lattice when operating the Gabor filter on the image. For 
+sigma value between 0.5 to 3 better results are obtained in 
+terms of high PSNR and lower MSE values. Generally s = 
+0.75, s = 1.5, s = 3 for simple, medium and large simple cell 
+width respectively [39]. 
+0 
+10 
+20 
+30 
+40 
+0 
+10 
+20 
+30 
+40
+0 
+0.2 
+0.4 
+0.6 
+0.8
+1 
+Fig.7 Gabor kernel with hanning window 
+Fig. 8 Gabor filter response for . = 00 , 600 and 1200 for the 
+hexagonal sampled image shown in Figure.2(b) 
+Fig. 9 Effect of Gabor kernel with Hanning window on hexagonal 
+sampled image 
+From the analysis, it was found that the processed images 
+are of better quality with these sigma values and the results are 
+plotted for s = 1.5 in Table .1 and Table.2.Table.1 shows the 
+performance comparison of the Gabor filter response of the 
+images on rectangular and hexagonal lattices.Table.2 shows 
+the performance comparison of the Gabor filter response of 
+the images with and without windowing technique on 
+hexagonal lattice . 
+TABLE I PERFORMANCE COMPARISON OF THE GABOR FILTER RESPONSE OF THE 
+IMAGES ON RECTANGULAR AND HEXAGONAL LATTICES (S = 1.5) 
+Gabor filter 
+response on 
+rectangular lattice 
+Gabor filter response 
+on hexagonal lattice 
+With hanning 
+window 
+PSNR MSE PSNR MSE 
+Mri.tif 55.76 0.172 66.57 0.0143 
+Chest 
+xray.tif 
+55.129 0.298 60.38 0.0595 
+Thumb.jpg 55.804 0.173 59.45 0.0737 
+Brain.jpg 54.827 0.214 59.84 0.0310 
+TABLE II PERFORMANCE COMPARISON OF THE GABOR FILTER RESPONSE OF 
+THE IMAGES WITH AND WITHOUT WINDOWING TECHNIQUE ON HEXAGONAL 
+LATTICE (S = 1.5) 
+Gabor filter 
+response With out 
+window 
+Gabor filter response 
+With hanning 
+window 
+PSNR MSE PSNR MSE 
+Mri.tif 63.403 0.029 65.506 0.0183 
+
+ Chest 
+xray.tif 
+57.412 
+0.118 
+64.296 0.0242 
+Thumb.jpg 52.601 0.357 59.45 0.0737 
+Brain.jpg 56.8244 0.1351 63.2220 0.0310 
+IV. CONCLUSIONS 
+We have proposed an implementation of Gabor filters on the 
+hexagonal lattice for resampling and interpolation. In an 
+earlier paper [37, 38], the benefits of hex Gabor filters were 
+reported for the purpose of filtering, edge detection and 
+registration. In this paper the parameter sigma` from 0.5 to 3 is 
+found to satisfy most of the image interpolation requirements 
+as per the results obtained in previous section. For reflected 
+images, we can get enhancement with a unique value of 
+sigma. The X-ray image analysis shows that this is not true for 
+images that contain light scattered pixels. 
+Interpolation methods using hexsplines and other 
+interpolating functions have a smoothing effect on the image, 
+whereas Gabor three orientation windowed filter show that the 
+edges are better preserved, while keeping the low frequency 
+information intact. It gives best results for the texture images. 
+Therefore this method is ideal for generation of medical atlas 
+from MRI images and for high definition TV. 
+The image quality obtained with Gabor filter has superior 
+visual quality over their spline counterparts over the 
+hexagonal lattice, leading to high-quality visualization of 
+images (see Figure 6, 9 ). Notice that the hazy edges are 
+modified to very sharp boundaries. 
+REFERENCES 
+[1] R. S, L. S. Rotolo, C. M. Park, T. J. Golab,“ X-RAY Image 
+Enhancement” , IEEE,1980. 
+[2] Hakan O¨ ktem, Karen Egiazarian, Jarkko Niittylahti Juha Lemmetti,“ 
+An approach to adaptive Enhancement of Diagnostic X-Ray Images ,” 
+EURASIP Journal on Applied Signal Processing 2003:5, 430–436. 
+[3] Du-Yih TSAI and Katsuyuki KOJIMA,“Wavelet coefficient mapping 
+for enhancement of chest x-ray images, ” Proceedings, XVII IMEKO 
+World Congress, June 22 – 27, 2003, Dubrovnik, Croatia. 
+[4] Tomoko Tateyama, Zensho Nakao, Xianhua Han and Yen-Wei Chen,“ 
+Contrast enhancement of MR brain images by Canonical correlations 
+based Kernel independent component analysis,” International Journal of 
+Innovative Computing, Information and Control, Vol.5, No.7, July 2009. 
+[5] Yan-Fei Zhao, Qing- Wei Gao, De-Xiang Zhang, and Yi-Xiang Lu,“ 
+Medical X-Ray Image Enhancement Based on Kramer’s PDE Model,” 
+Journal of Electronic Science and Technology of China, Vol. 5, No. 2, 
+June 2007. 
+[6] M. Dirk Robinson , Sina Farsiu, Joseph Y. Lo and Cynthia A. Toth ,“ 
+Efficient Restoration and Enhancement of Super-resolved X-ray 
+Images,” ICIP , IEEE , 2008. 
+[7] M.Golay, "Hexagonal parallel pattern transformation", IEEE 
+Transactions on computers, Vol. 18, No.8, pp.733- 740, 1969. 
+[8] R.M.Mersereau., "The process of hexagonally sampled Two – 
+dimensional signals", Proceedings of the IEEE, Vol 67, pp.930-949, 
+1979. 
+[9] B.Kamgar-Parsi and W.A. Sander, III, "Quantization error in spatial 
+sampling: comparison between square and hexagonal pixels", Computer 
+Vision and Pattern Recognition, Proceedings CVPR ‘89’ pp. 604 – 611, 
+1989. 
+[10] B.Kamgar-Parsi, "Quantization error in hexagonal sensory 
+configurations", IEEE Transactions on Pattern Analysis and Machine 
+Intelligence, Vol.14, No.6, pp. 665-671, 1992. 
+[11] J.P.Mylopoulos and T.Pavlidis, "On the topological properties of 
+quantized spaces, I. the notion of dimension", Journal of the ACM 
+(JACM), Vol.18, No.2, pp. 239-246, 1971. 
+[12] J.P.Mylopoulos and T.Pavlidis, "On the topological properties of 
+quantized spaces, II. connectivity and order of connectivity", Journal of 
+the ACM (JACM), Vol 18,No 2, pp.247- 254,1971. 
+[13] R.Vitulli, et al., "Aliasing effects mitigation by optimized sampling grids 
+and impact on image acquisition chains", Geoscience and Remote 
+Sensing Symposium, IGARSS '02, pp. 979-981, 2002. 
+[14] Eric Anterrieu, Philippe Waldteufel and André Lannes, “Apodization 
+Functions for 2-D Hexagonally Sampled Synthetic Aperture Imaging 
+Radiometers”, IEEE Transactions On Geoscience And Remote 
+Sensing, Vol. 40, No. 12, pp. 2531-2542, December 2002. 
+[15] Lee Middleton and Jayanthi Sivaswamy , “Hexagonal Image Processing 
+– A Practical approach”, Springer-Verlag London Limited, 2005. 
+[16] Senthil Periaswamy, “Detection of Micro calcifications in Mammograms 
+Using Hexagonal Wavelets”, Thesis work, University of South Carolina, 
+1996. 
+[17] L. Condat, D. Van De Ville, and T. Blu, “Hexagonal versus orthogonal 
+lattices: A new comparison using approximation theory,” in Proceedings 
+of IEEE, ICIP,Vol. 3, Sept. 2005. 
+[18] M. Unser, “Splines: A perfect fit for signal and image processing,” IEEE 
+Signal Processing Magazine., Vol. 16, No. 6, pp. 22–38, Nov. 1999. 
+[19] D. Van De Ville, W. Philips, and I. Lemahieu, “Least-squares spline 
+resampling to a hexagonal lattice,” Signal Processing: Image 
+Communication, Vol. 17, No. 5, pp. 393–408, May 2002. 
+[20] L. Condat and D. Van De Ville , “Quasi-interpolating spline models for 
+hexagonally sampled data,” IEEE Transactions on Image Processing, 
+Vol. 16, No. 5, May 2007, pp.1195-1206. 
+[21] P. Th´evenaz, T. Blu, and M. Unser, “Interpolation revisited,” IEEE 
+Transactions on Medical Imaging , Vol. 19, No.7, pp. 739–758, July 
+2000. 
+[22] D. E. Dudgeon and M. E. Mersereau, Multidimensional Signal 
+Processing. Englewood Cliffs, NJ: Prentice-Hall, 1984. 
+[23] D. Van De Ville, T. Blu,M. Unser,W. Philips and I. Lemahieu, “Hexspline: 
+A novel family for hexagonal lattices,” IEEE Transactions on 
+Image Processing, Vol. 13, No. 6, June 2004, pp.758–772. 
+[24] Laurent Condat and Dimitri Van De Ville,“Three-directional boxsplines: 
+Characterization and efficient evaluation,” IEEE Signal 
+Processing Letters., Vol. 13, No. 7, July 2006 , pp. 417–420. 
+[25] C. de Boor, K. Hollig, and S. Riemenschneider, “Box Splines”: 
+Springer-Verlag, 1993, Applied Mathematical Sciences,Vol. 98. 
+[26] H. Prautzsch and W. Boehm, “Box splines,” in Handbook of Computer 
+Aided Geometric Design. Berlin: Springer, 2001. 
+[27] Lee, T.S, “Image Representation Using 2D Gabor Wavelets, IEEE 
+Transactions on Pattern Analysis and Machine Intelligence, ” Vol. 18, 
+Issue 10, 1996, pp. 951-979. 
+[28] D. J. Gabor, “Theory of communication,” IEE, Vol. 93, No. 26, pp. 429– 
+457, 1946. 
+[29] Xu, Y., Zhang, X ,“ Gabor Filter bank and its Application in the 
+Fingerprint Texture Analysis,” PDCAT 2005, pp. 829-831. 
+[30] Huang, L., Shimizu, A., Kobatake, H , “Classification-Based Face 
+Detection Using Gabor Filter Features,” Proceedings of the IEEE 
+International Conference on Automatic Face and Gesture Recognition, 
+2004, pp. 397-402. 
+[31] Jain, A.K., Prabhakar, S., Hong, L., Pankanti, S,“Filter bank-Based 
+Fingerprint Matching,” IEEE Transactions on Image Processing, Vol. 9, 
+Issue 5, 2000, pp. 846-859. 
+[32] Jones, J.P., Palmer, L.A, “An Evaluation of the Two-Dimensional Gabor 
+Filter Model of Simple Receptive Fields in Cat Striate Cortex, “ Journal 
+of Neurophysiology, Vol. 58, Issue 6, 1987, pp. 1233-1258. 
+[33] D.Hubel and T.Weisel ,“ Receptive fields and functional architecture of 
+monkey striate cortex,” Journal of Physiology ,Vol..195, pp.215- 
+243,1968. 
+[34] B. S. Manjunath and W. Y. Ma, “Texture features for browsing and 
+retrieval of image data,” IEEE Transactions on Pattern Analysis and 
+Machine Intelligence., Vol. 18, No 8, August 1996, pp. 837–842. 
+[35] Mohamed Najim ,“Digital Filters Design for Signal and Image 
+Processing,” ISTE Ltd, USA. 
+[36] Veni. S, K.A. Narayanankutty, Satyapal Reddy.L, Vidya.P ,“ Wavelet 
+based Edge detection and Multiresolution analysis on Hexagonal 
+Sampled Grid Using Interpolation,” proceedings ICSIP - 2009 , August 
+12-14 2009 , Excel publications, ISBN:978-93-80043-26-5,pp.186-200. 
+[37] Veni.S, K.A.Narayanankutty , Vidya.P ,“ Performance analysis of Edge 
+Detection methods on hexagonal sampling Grid,” International Journal 
+ of Electronics Engineering and Research (IJEER), Research India 
+publications Vol.1, No. 4 (2009) ,pp. 313–328. 
+S.Veni received the Master of Engineering degree ( Applied Electronics) 
+from the Bharathiar University and AMIE ( Electronics and communication 
+Engineering) from the Institution of Engineers (Calcutta), India in 1997 and 
+1994 respectively .She is now Assistant Professor at Amrita School of 
+Engineering, Amrita Vishwa Vidya Peetham, Coimbatore, Tamil Nadu, India. 
+K.A Narayanankutty received the Master of Engineering degree ( 
+Electrical Engineering) and Ph.D from the Indian Institute of Science, 
+Bangalore, India in 1974 and 1980 respectively .He is now Professor at 
+Amrita School of Engineering, Amrita Vishwa Vidya Peetham, Coimbatore, 
+Tamil Nadu, India. 

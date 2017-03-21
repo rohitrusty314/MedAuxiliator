@@ -1,0 +1,17 @@
+nt wrk
+358
+14
+
+///////////////////////////
+
+bak dark, tum dark =156 	m = 37.2177 	std =  42.4869        m<40 and std<45 -- th=
+bak dark, tum dark =206 	m = 33.0434 	std =  39.9560
+
+bak dark, tum light =28 	m = 58.3804 	std = 69.3990         th=200
+bak dark, tum light =411 	m = 36.3554 	std = 51.4070
+
+bak light, tum dark =46 	m = 52.8886 	std = 79.7938         th=
+bak light, tum dark =480	m = 79.4789 	std = 98.7669
+
+bak light, tum light =136	m = 72.4965     std =  83.7834        th=215
+
